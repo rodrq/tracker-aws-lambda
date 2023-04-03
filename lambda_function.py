@@ -45,6 +45,6 @@ def get_price():
         return 'Request error'
 
 def lambda_handler(event, context):
-    response = {'Date': datetime.now().strftime('%y-%m-%d'), 'Time':datetime.now().strftime('%H:%M'), 'Price': get_price()}
-    response = table.put_item(Item=response)
-    print('Item added to DynamoDB:', response)
+    response = {'date':datetime.now().strftime('%y-%m-%d'), 'time': datetime.now().strftime('%H:%M'), 'price': get_price()}
+    table.put_item(Item=response)
+    return "200"
